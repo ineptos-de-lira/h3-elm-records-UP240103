@@ -50,17 +50,18 @@ onlyStudents list =
         list
 
 
-type Videogame
-    = Videogame String Int Bool Int (List String)
+type alias Videogame =
+    { title : String
+    , releaseYear : Int
+    , available : Bool
+    , downloads : Int
+    , genres : List String
+    }
 
 
 getVideogameGenres : List Videogame -> List (List String)
 getVideogameGenres list =
-    List.map
-        (\(Videogame _ _ _ _ genres) ->
-            genres
-        )
-        list
+    List.map .genres list
 
 
 type alias Computer =
